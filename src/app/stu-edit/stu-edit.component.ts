@@ -12,7 +12,6 @@ import { Stu } from '../models/Stud.model';
   styleUrls: ['./stu-edit.component.css'],
 })
 export class StuEditComponent implements OnInit {
-  selectedFile: File = null;
   studentDet: StudentFee = null;
   @ViewChild('form') form: NgForm;
   isFetched: boolean = false;
@@ -44,7 +43,7 @@ export class StuEditComponent implements OnInit {
     fee.student.payments = this.studentDet.student.payments;
 
     this.stu
-      .insertStudentWithFeeSimple(fee, this.selectedFile)
+      .insertStudentWithFeeSimple(fee)
       .subscribe((data) => {
         console.log(data);
         this.router.navigate(['students', 'details']);
@@ -52,8 +51,4 @@ export class StuEditComponent implements OnInit {
     form.reset();
   }
 
-  onFileSelected(event) {
-    this.selectedFile = <File>event.target.files[0];
-    console.log(this.selectedFile);
-  }
 }

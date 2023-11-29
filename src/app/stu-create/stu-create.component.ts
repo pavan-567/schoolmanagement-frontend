@@ -12,7 +12,6 @@ import { StudentFee } from '../models/StudentFee.model';
   styleUrls: ['./stu-create.component.css'],
 })
 export class StuCreateComponent implements OnInit {
-  selectedFile: File = null;
   @ViewChild('form') form: NgForm;
   masterDetails: Master[];
   error: string = null;
@@ -52,16 +51,13 @@ export class StuCreateComponent implements OnInit {
     //     console.log('+_+');
     //   });
     this.stu
-      .insertStudentWithFeeSimple(fee, this.selectedFile)
+      .insertStudentWithFeeSimple(fee)
       .subscribe((data: Stu) => {
         this.id = data.id;
       });
     form.reset();
   }
 
-  onFileSelected(event) {
-    this.selectedFile = <File>event.target.files[0];
-  }
 
   onGradeSelected(event) {
     // Extracting Grade

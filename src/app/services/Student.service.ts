@@ -29,14 +29,8 @@ export class StudentService {
     return this.http.delete(`${this.API}/student-delete/${id}`);
   }
 
-  insertStudentWithFeeSimple(fee: StudentFee, file) {
-    const form = new FormData();
-    form.append('file', file, file.name);
-    form.append(
-      'fee',
-      new Blob([JSON.stringify(fee)], { type: 'application/json' })
-    );
-    return this.http.post(`${this.API}/student-simple`, form);
+  insertStudentWithFeeSimple(fee: StudentFee) {
+    return this.http.post(`${this.API}/student-simple`, fee);
   }
 
 
