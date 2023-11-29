@@ -319,13 +319,13 @@
     </div>
   </div>
   <div class="mb-3">
-    <button class="btn btn-primary my-3 me-3">Submit</button>
-    <button
+    <button class="btn btn-primary my-3 me-3" [disabled]="!form.valid">Submit</button>
+    <!-- <button
       type="button"
       class="btn btn-primary my-3"
       (click)="generateDummy()"
     >
       Generate Dummy
-    </button>
+    </button> -->
   </div>
 </form>
