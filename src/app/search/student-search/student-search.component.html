@@ -1,0 +1,45 @@
+<div>
+  <div class="card">
+    <h5 class="card-header">Details</h5>
+    <div class="card-body">
+      <div class="card-text">
+        <div class="table-responsive">
+          <!--  -->
+          <table class="table table-striped table-bordered table-hover">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Father Name</th>
+                <th scope="col">Mother Name</th>
+                <th scope="col">DOB</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Mobile Number</th>
+                <th scope="col">Address</th>
+                <th scope="col">Options</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let stu of stuData">
+                <th scope="row">{{ stu.id }}</th>
+                <td>{{ stu.name }}</td>
+                <td>{{ stu.fatherName }}</td>
+                <td>{{ stu.motherName }}</td>
+                <td>{{ stu.dob }}</td>
+                <td>{{ stu.gender }}</td>
+                <td>{{ stu.phoneNo }}</td>
+                <td>{{ stu.address }}</td>
+                <td>
+                  <button class="btn btn-info" (click)="onNavigateEdit(stu.id)">
+                    Edit
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <!--  -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

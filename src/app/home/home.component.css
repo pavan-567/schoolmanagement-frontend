@@ -1,0 +1,29 @@
+.msg-handler {
+  font-size: 5rem;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.msg-handler div {
+  animation-name: fade;
+  animation-duration: 2s;
+}
+
+.msg-handler p {
+  font-size: 2rem;
+  animation-name: fade;
+  animation-duration: 2s;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

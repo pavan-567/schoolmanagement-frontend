@@ -1,0 +1,79 @@
+<div class="mt-5">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="card">
+        <h5 class="card-header">Search</h5>
+        <div class="card-body">
+          <div class="card-text">
+            <form action="" #form="ngForm">
+              <div class="mb-3">
+                <label class="form-label">Enter Year</label>
+                <input
+                  type="number"
+                  name="year"
+                  ngModel
+                  required
+                  class="form-control"
+                  placeholder="Year"
+                />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Standard</label>
+                <select name="standard" ngModel required class="form-select">
+                  <option value="" selected>Select One Of Below Options</option>
+                  <option value="nursery">Nursery</option>
+                  <option value="lkg">LKG</option>
+                  <option value="ukg">UKG</option>
+                  <option value="I">I</option>
+                  <option value="II">II</option>
+                  <option value="III">III</option>
+                  <option value="IV">IV</option>
+                  <option value="V">V</option>
+                  <option value="VI">VI</option>
+                  <option value="VII">VII</option>
+                  <option value="VIII">VIII</option>
+                  <option value="IX">IX</option>
+                  <option value="X">X</option>
+                </select>
+              </div>
+              <div class="mb-3 d-flex flex-column">
+                <button
+                  type="button"
+                  [disabled]="!form.valid"
+                  class="btn btn-warning my-3"
+                  (click)="onSubmit(form, 'stu')"
+                >
+                  Student Search
+                </button>
+                <button
+                  type="button"
+                  [disabled]="!form.valid"
+                  class="btn btn-danger"
+                  (click)="onSubmit(form, 'pay')"
+                >
+                  Payment Search
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div *ngIf="error">
+        <div
+          class="alert alert-{{ isWarning ? 'warning' : 'danger' }}"
+          role="alert"
+        >
+          <h4 class="alert-heading">{{ isWarning ? "Warning!" : "Error!" }}</h4>
+          <p>{{ error }}</p>
+          <hr />
+          <p class="mb-0">Try To Submit The Data Again!</p>
+        </div>
+      </div>
+      <div *ngIf="!error">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

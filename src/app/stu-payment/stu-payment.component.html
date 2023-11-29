@@ -1,0 +1,286 @@
+<div class="mt-5">
+  <div class="row" *ngIf="!error && fetched">
+    <div class="alert alert-success" role="alert" *ngIf="stuFee.balance <= 0">
+      Your Dues Has Been Cleared Successfully!
+    </div>
+  </div>
+
+  <!--  -->
+  <div class="row">
+    <div class="col-md-3 m-2">
+      <div class="card">
+        <h5 class="card-header">Payment Search</h5>
+        <div class="card-body">
+          <div class="card-text">
+            <form action="" #form="ngForm">
+              <div class="mb-3">
+                <label class="form-label">Student ID</label>
+                <input
+                  type="number"
+                  name="id"
+                  ngModel
+                  required
+                  class="form-control"
+                  placeholder="Admission ID"
+                />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Standard</label>
+                <select name="standard" ngModel required class="form-select">
+                  <option value="" selected>Select One Of Below Options</option>
+                  <option value="nursery">Nursery</option>
+                  <option value="lkg">LKG</option>
+                  <option value="ukg">UKG</option>
+                  <option value="I">I</option>
+                  <option value="II">II</option>
+                  <option value="III">III</option>
+                  <option value="IV">IV</option>
+                  <option value="V">V</option>
+                  <option value="VI">VI</option>
+                  <option value="VII">VII</option>
+                  <option value="VIII">VIII</option>
+                  <option value="IX">IX</option>
+                  <option value="X">X</option>
+                </select>
+              </div>
+              <div class="">
+                <button
+                  type="button"
+                  [disabled]="!form.valid"
+                  (click)="onSubmit(form)"
+                  class="btn btn-warning"
+                >
+                  Search
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 m-2">
+      <div *ngIf="error">
+        <div
+          class="alert alert-{{ isWarning ? 'info' : 'danger' }}"
+          role="alert"
+        >
+          <h4 class="alert-heading">{{ isWarning ? "Warning!" : "Error!" }}</h4>
+          <p>{{ error }}</p>
+          <hr />
+          <p class="mb-0">
+            {{
+              isWarning ? "Try To Submit The Data Again!" : "Come Back Later!"
+            }}
+          </p>
+        </div>
+      </div>
+      <div *ngIf="!error && fetched">
+        <div class="card">
+          <h5 class="card-header">Student Fee Detail</h5>
+          <div class="card-body">
+            <form
+              action=""
+              (submit)="onSubmitFeeForm(submitForm)"
+              #submitForm="ngForm"
+            >
+              <input
+                type="hidden"
+                name="paymentId"
+                ngModel
+                class="form-control"
+              />
+
+              <div class="mb-3">
+                <label class="form-label">Reciept ID</label>
+                <input
+                  type="number"
+                  [ngModel]="stuFee.id"
+                  required
+                  class="form-control"
+                  name="id"
+                  readonly
+                  style="background-color: lightgray"
+                />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Administration Number</label>
+                <!-- Student ID Represents Administration Number -->
+                <input
+                  type="number"
+                  class="form-control"
+                  [ngModel]="stuFee.student.id"
+                  required
+                  name="student_id"
+                  readonly
+                  style="background-color: lightgray"
+                />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Student Name</label>
+                <input
+                  type="text"
+                  [ngModel]="stuFee.student.name"
+                  required
+                  class="form-control"
+                  placeholder=""
+                  name="name"
+                  readonly
+                  style="background-color: lightgray"
+                />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Father Name</label>
+                <input
+                  type="text"
+                  [ngModel]="stuFee.student.fatherName"
+                  required
+                  class="form-control"
+                  placeholder=""
+                  name="fatherName"
+                  readonly
+                  style="background-color: lightgray"
+                />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Mother Name</label>
+                <input
+                  type="text"
+                  [ngModel]="stuFee.student.motherName"
+                  required
+                  class="form-control"
+                  placeholder=""
+                  name="motherName"
+                  readonly
+                  style="background-color: lightgray"
+                />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Standard</label>
+                <input
+                  type="text"
+                  [ngModel]="stuFee.standard"
+                  required
+                  class="form-control"
+                  placeholder=""
+                  name="standard"
+                  readonly
+                  style="background-color: lightgray"
+                />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Actual Fee</label>
+                <input
+                  type="number"
+                  [ngModel]="stuFee.actualFee"
+                  required
+                  class="form-control"
+                  placeholder=""
+                  name="actualFee"
+                  readonly
+                  style="background-color: lightgray"
+                />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Total Fee</label>
+                <input
+                  type="number"
+                  [ngModel]="stuFee.totalFee"
+                  required
+                  class="form-control"
+                  placeholder=""
+                  name="totalFee"
+                  readonly
+                  style="background-color: lightgray"
+                />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Discount</label>
+                <input
+                  type="number"
+                  [ngModel]="stuFee.discount"
+                  required
+                  class="form-control"
+                  placeholder=""
+                  name="discount"
+                  readonly
+                  style="background-color: lightgray"
+                />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Balance</label>
+                <input
+                  type="number"
+                  [(ngModel)]="stuFee.balance"
+                  required
+                  class="form-control"
+                  placeholder=""
+                  name="balance"
+                  readonly
+                  style="background-color: lightgray"
+                />
+              </div>
+              <div class="mb-3" *ngIf="stuFee.balance > 0">
+                <label class="form-label">Amount</label>
+                <input
+                  type="number"
+                  ngModel
+                  required
+                  class="form-control"
+                  placeholder=""
+                  name="amount"
+                  [readonly]="stuFee.balance <= 0"
+                  [ngStyle]="{
+                    backgroundColor: stuFee.balance <= 0 ? 'lightgray' : ''
+                  }"
+                />
+              </div>
+              <div class="mb-3" *ngIf="stuFee.balance > 0">
+                <button class="btn btn-primary" [disabled]="!submitForm.valid">
+                  Submit
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-5 m-2" *ngIf="!error && fetched">
+      <div class="card">
+        <h5 class="card-header">Payment Reciepts</h5>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-hover table-striped table-bordered">
+              <thead>
+                <tr class="">
+                  <th scope="col">Receipt No</th>
+                  <th scope="col">Total Fee</th>
+                  <th scope="col">Discount</th>
+                  <th scope="col">Paid Fee</th>
+                  <th scope="col">Date Of Payment</th>
+                  <th scope="col">Options</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let payment of stuFee.student.payments">
+                  <td>{{ payment.id }}</td>
+                  <td>{{ payment.totalFee }}</td>
+                  <td>{{ payment.discount }}</td>
+                  <td>{{ payment.paidFee }}</td>
+                  <td>{{ payment.dateOfPayment }}</td>
+                  <td>
+                    <button
+                      class="btn btn-outline-danger"
+                      (click)="onClickEdit(payment)"
+                    >
+                      Edit
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+<div>
+  <div class="card">
+    <h5 class="card-header">Payment Details</h5>
+    <div class="card-body">
+      <div class="card-text">
+        <div class="table-responsive">
+          <!--  -->
+          <table class="table table-striped table-bordered table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Student ID</th>
+                <th scope="col">Student Name</th>
+                <th scope="col">Father Name</th>
+                <th scope="col">Mother Name</th>
+                <th scope="col">Total Fee</th>
+                <th scope="col">Paid Fee</th>
+                <th scope="col">Balance</th>
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container *ngFor="let stu of stuData">
+                <tr *ngFor="let payment of stu.payments">
+                  <th scope="row">{{ stu.id }}</th>
+                  <td>{{ stu.name }}</td>
+                  <td>{{ stu.fatherName }}</td>
+                  <td>{{ stu.motherName }}</td>
+                  <td>{{ payment.totalFee }}</td>
+                  <td>{{ payment.paidFee }}</td>
+                  <td>{{ payment.totalFee - payment.paidFee }}</td>
+                </tr>
+              </ng-container>
+            </tbody>
+          </table>
+          <!--  -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

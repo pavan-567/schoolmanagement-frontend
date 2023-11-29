@@ -1,0 +1,61 @@
+<div class="alert alert-danger mt-3" role="alert" *ngIf="errorMessage">
+  <b>Error!</b> {{ errorMessage }}
+</div>
+
+<div class="card mt-5">
+  <h5 class="card-header">Details</h5>
+  <div class="card-body">
+    <div class="card-text">
+      <form action="" #form="ngForm">
+        <div class="mb-3">
+          <label class="form-label">Enter Student ID</label>
+          <input
+            type="number"
+            name="id"
+            ngModel
+            required
+            class="form-control"
+            placeholder="Student ID"
+          />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Standard</label>
+          <select name="standard" ngModel required class="form-select">
+            <option value="" selected>Select One Of Below Options</option>
+            <option value="nursery">Nursery</option>
+            <option value="lkg">LKG</option>
+            <option value="ukg">UKG</option>
+            <option value="I">I</option>
+            <option value="II">II</option>
+            <option value="III">III</option>
+            <option value="IV">IV</option>
+            <option value="V">V</option>
+            <option value="VI">VI</option>
+            <option value="VII">VII</option>
+            <option value="VIII">VIII</option>
+            <option value="IX">IX</option>
+            <option value="X">X</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <button
+            type="button"
+            (click)="onSubmit(form.value, 'edit')"
+            [disabled]="!form.valid"
+            class="btn btn-warning me-3"
+          >
+            Edit
+          </button>
+          <button
+            type="button"
+            (click)="onSubmit(form.value, 'delete')"
+            [disabled]="!form.valid"
+            class="btn btn-danger"
+          >
+            Delete
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

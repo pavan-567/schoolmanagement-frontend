@@ -1,0 +1,315 @@
+<div class="d-flex justify-content-center align-items-center vh-100" *ngIf="!isFetched">
+  <div class="spinner-border" role="status" style="width: 150px; height: 150px; font-size: 2rem;">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+
+<form action="" (ngSubmit)="onFormSubmit(form)" #form="ngForm" *ngIf="isFetched">
+  <div class="">
+    <div class="mt-3" ngModelGroup="studentData">
+      <div class="fs-3 fw-semibold">Edit Student</div>
+      <div class="card mt-3">
+        <h5 class="card-header">Instructions</h5>
+        <div class="card-body">
+          <!-- <h5 class="card-title">Special title treatment</h5> -->
+          <p class="card-text">Edit Your Information In The Below Fields</p>
+        </div>
+      </div>
+      <div class="card mt-3">
+        <h5 class="card-header">Basic Details</h5>
+        <div class="card-body">
+          <!-- <h5 class="card-title">Special title treatment</h5> -->
+          <div class="card-text">
+            <!-- Form Controls -->
+            <div class="mb-3">
+              <label for="">Student ID</label>
+              <input
+                type="number"
+                class="form-control"
+                name="id"
+                [ngModel]="studentDet.student.id"
+                required
+                readonly
+                style="background-color: lightgray;"
+              />
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Name</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Enter Name"
+                name="name"
+                [ngModel]="studentDet.student.name"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Mobile Number</label>
+              <input
+                type="number"
+                class="form-control"
+                placeholder="Ex : 8765431201"
+                name="phoneNo"
+                [ngModel]="studentDet.student.phoneNo"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label"
+                >Gender</label
+              >
+              <select
+                class="form-select"
+                aria-label="Default select example"
+                name="gender"
+                [ngModel]="studentDet.student.gender"
+                required
+              >
+                <option selected>Open this select menu</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Aadhar Number</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Ex : 121 212 111"
+                name="aadharNo"
+                [ngModel]="studentDet.student.aadharNo"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label"
+                >Cast</label
+              >
+              <select
+                class="form-select"
+                aria-label="Default select example"
+                name="cast"
+                [ngModel]="studentDet.student.cast"
+                required
+              >
+                <option selected>Open this select menu</option>
+                <option value="OC">OC</option>
+                <option value="BC">BC</option>
+                <option value="SC">SC</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label"
+                >Date Of Birth</label
+              >
+              <input
+                type="date"
+                [ngModel]="studentDet.student.dob"
+                required
+                class="form-control"
+                name="dob"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label"
+                >Image</label
+              >
+              <input
+                type="file"
+                name="image"
+                ngModel
+                class="form-control"
+                (change)="onFileSelected($event)"
+              />
+              <span>Previous File Name : <b>{{studentDet.student.imageName}}</b></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card mt-3">
+        <h5 class="card-header">Parent Details</h5>
+        <div class="card-body">
+          <!-- <h5 class="card-title">Special title treatment</h5> -->
+          <div class="card-text">
+            <!-- Form Controls -->
+            <div class="mb-3">
+              <label class="form-label">Father Name</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Enter Father Name"
+                name="fatherName"
+                [ngModel]="studentDet.student.fatherName"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Mother Name</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Enter Mother Name"
+                name="motherName"
+                [ngModel]="studentDet.student.motherName"
+                required
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card mt-3">
+        <h5 class="card-header">Address Details</h5>
+        <div class="card-body">
+          <!-- <h5 class="card-title">Special title treatment</h5> -->
+          <div class="card-text">
+            <!-- Form Controls -->
+            <div class="mb-3">
+              <label class="form-label">Address</label>
+              <input
+                type="text"
+                class="form-control"
+                name="address"
+                placeholder="Enter Address"
+                [ngModel]="studentDet.student.address"
+                required
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card mt-3">
+        <h5 class="card-header">Miscellaneous Details</h5>
+        <div class="card-body">
+          <!-- <h5 class="card-title">Special title treatment</h5> -->
+          <div class="card-text">
+            <!-- Form Controls -->
+            <div class="mb-3">
+              <label class="form-label">Previous School</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="School Name"
+                name="prevSchool"
+                [ngModel]="studentDet.student.prevSchool"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="" class="form-label">Date Of Joining</label>
+              <input
+                type="date"
+                name="dateOfJoining"
+                class="form-control"
+                id=""
+                [ngModel]="studentDet.student.dateOfJoining"
+                required
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-3" ngModelGroup="feeData">
+      <div class="card mt-3">
+        <h5 class="card-header">Fee Details</h5>
+        <div class="card-body">
+          <!-- <h5 class="card-title">Special title treatment</h5> -->
+          <div class="card-text">
+            <!-- Form Controls -->
+            <div class="mb-3">
+              <input type="hidden" name="id" id="" [ngModel]="studentDet.id" />
+              <label class="form-label">Standard</label>
+              <select name="standard" [ngModel]="studentDet.standard" required class="form-select">
+                <option value="" selected>Select One Of Below Options</option>
+                <option value="nursery">Nursery</option>
+                <option value="lkg">LKG</option>
+                <option value="ukg">UKG</option>
+                <option value="I">I</option>
+                <option value="II">II</option>
+                <option value="III">III</option>
+                <option value="IV">IV</option>
+                <option value="V">V</option>
+                <option value="VI">VI</option>
+                <option value="VII">VII</option>
+                <option value="VIII">VIII</option>
+                <option value="IX">IX</option>
+                <option value="X">X</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Actual Fee</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Actual Fee"
+                name="actualFee"
+                [ngModel]="studentDet.actualFee"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Book Fee</label>
+              <input
+                type="text"
+                name="bookFee"
+                [ngModel]="studentDet.bookFee"
+                required
+                class="form-control"
+                placeholder="Book Fee"
+              />
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Tution Fee</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Tution Fee"
+                name="tutionFee"
+                [ngModel]="studentDet.tutionFee"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Transport Fee</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Transport Fee"
+                name="transportFee"
+                [ngModel]="studentDet.transportFee"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Discount</label>
+              <input
+                type="text"
+                class="form-control"
+                name="discount"
+                placeholder="discount"
+                [ngModel]="studentDet.discount"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Total Fee</label>
+              <input
+                type="text"
+                class="form-control"
+                name="totalFee"
+                placeholder="Total Fee"
+                [ngModel]="studentDet.totalFee"
+                required
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mb-3">
+    <button class="btn btn-outline-primary my-3 me-3">Submit</button>
+  </div>
+</form>

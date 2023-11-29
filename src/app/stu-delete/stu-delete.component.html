@@ -1,0 +1,36 @@
+<div class="row mt-5" *ngIf="isFetched">
+  <div class="col-md-6">
+    <div class="card">
+      <h5 class="card-header">Confirmation</h5>
+      <div class="card-body">
+        <h5 class="card-title">
+          Are You Sure You Want To Delete The Student ?
+        </h5>
+        <p class="card-text">
+          Check The Details On Other Side and Confirm Your Decision..
+        </p>
+        <button class="btn btn-outline-info" (click)="onDeleteStu()">Delete</button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card" style="width: 18rem">
+      <img
+        src="data:image/png;base64,{{ stuData.imageData }}"
+        class=""
+        alt="..."
+        style="width: 100%; height: 300px; object-fit: cover"
+      />
+      <div class="card-body">
+        <h5 class="card-title">Student ID : {{ stuData.id }}</h5>
+        <div class="card-text">
+          <p>Name : {{ stuData.name }}</p>
+          <p>Father Name : {{ stuData.fatherName }}</p>
+          <p>Mother Name : {{ stuData.motherName }}</p>
+
+          <p>Gender : {{ stuData.gender }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
