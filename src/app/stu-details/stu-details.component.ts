@@ -15,7 +15,7 @@ export class StuDetailsComponent {
 
   onSubmit(info, mode: string) {
     const { id, standard } = info;
-    this.stu.fetchStudentWithFee(id).subscribe(
+    this.stu.fetchStuFeeData(id).subscribe(
       (resData) => {
         if (resData?.standard === standard) {
           if (mode === 'edit') this.router.navigate(['students', 'edit', id]);

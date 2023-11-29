@@ -55,13 +55,16 @@ export class MasterComponent {
     }
 
     this.master.insertMasterDetails(masterData).subscribe((resData: Master) => {
-      // Needs To Update Master Data
-      this.masterDetails = this.masterDetails.map((mastDet) =>
-        mastDet.id === resData.id ? resData : mastDet
-      );
+      console.log(`Edit Mode : ${this.onEditMode}`);
+      if (this.onEditMode) {
+        this.masterDetails = this.masterDetails.map((mastDet) =>
+          mastDet.id === resData.id ? resData : mastDet
+        );
+      } else {
+        this.masterDetails.unshift(resData);
+      }
+      this.onEditMode = false;
     });
-
-    this.onEditMode = false;
 
     form.reset();
   }
