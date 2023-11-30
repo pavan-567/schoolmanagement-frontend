@@ -1,5 +1,5 @@
 <div class="row mt-5" *ngIf="isFetched">
-  <div class="col-md-6">
+  <div class="col-md-6 mt-2">
     <div class="card">
       <h5 class="card-header">Confirmation</h5>
       <div class="card-body">
@@ -13,7 +13,7 @@
       </div>
     </div>
   </div>
-  <div class="col-md-6">
+  <div class="col-md-6 mt-2">
     <div class="card" style="width: 18rem">
       <img
         src="/assets/images/naruto.png"
@@ -22,13 +22,13 @@
         style="width: 100%; height: 300px; object-fit: cover"
       />
       <div class="card-body">
-        <h5 class="card-title">Student ID : {{ stuData.id }}</h5>
+        <h5 class="card-title">Student ID : {{ stuFee.student.id }}</h5>
         <div class="card-text">
-          <p>Name : {{ stuData.name }}</p>
-          <p>Father Name : {{ stuData.fatherName }}</p>
-          <p>Mother Name : {{ stuData.motherName }}</p>
+          <p>Name : {{ stuFee.student.name }}</p>
+          <p>Father Name : {{ stuFee.student.fatherName }}</p>
+          <p>Mother Name : {{ stuFee.student.motherName }}</p>
 
-          <p>Gender : {{ stuData.gender }}</p>
+          <p>Gender : {{ stuFee.student.gender }}</p>
         </div>
       </div>
     </div>
